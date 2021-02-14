@@ -13,3 +13,12 @@
 # Goal
 
 The purpose of this repository is to put into practice all the good practices learned over the years in a single project to test a POC
+
+# What you find here
+- TDD.
+- DDD concepts. 
+- Clean architecutre.
+- Obsession with primitive types.
+- Concept of strong domain.
+- Notification Pattern.
+- Domain Notitification
