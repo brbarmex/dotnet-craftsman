@@ -7,7 +7,7 @@ namespace FP.DotNet.Tests.ValueObjects
     public class EmailTest
     {
         [Theory]
-        [ClassData(typeof(EmailClassData))]
+        [ClassData(typeof(EmailClassDataForValidateFunctionThatCheckEmail))]
         public void Should_Validate_Email(bool expected, string value)
         {
             Email email = value;

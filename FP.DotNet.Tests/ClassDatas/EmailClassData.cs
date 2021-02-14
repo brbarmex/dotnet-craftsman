@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FP.DotNet.Tests.ClassDatas
 {
-    public class EmailClassData : IEnumerable<object[]>
+    public class EmailClassDataForValidateFunctionThatCheckEmail : IEnumerable<object[]>
     {
         public IEnumerator<object[]> GetEnumerator()
         {
@@ -14,8 +14,6 @@ namespace FP.DotNet.Tests.ClassDatas
         }
 
         IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new System.NotImplementedException();
-        }
+        => default;
     }
 }

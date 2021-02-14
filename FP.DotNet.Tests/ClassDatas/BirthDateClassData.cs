@@ -13,8 +13,6 @@ namespace FP.DotNet.Tests.MemberDatas
         }
 
         IEnumerator IEnumerable.GetEnumerator()
-        {
-            return default;
-        }
+        => default;
     }
 }
