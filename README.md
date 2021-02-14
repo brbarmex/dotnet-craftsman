@@ -1,1 +1,1 @@
-# dotnet-functional-paradigm
+# Craftsman
