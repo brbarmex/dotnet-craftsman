@@ -45,6 +45,30 @@ namespace FP.DotNet.Tests.ClassDatas
                             string.Empty,
                             string.Empty),
                 };
+            yield return new object[]{
+             0,
+                new Customer("Bruno",
+                            "Barbosa de Melo",
+                            "172.236.500-52",
+                            "bruno.b.melo@live.com",
+                            new DateTime(1994,07,30),
+                            "My address",
+                            "04173-020",
+                            "São Paulo",
+                            "Brazil"),
+                };
+            yield return new object[]{
+             1,
+                new Customer("Bruno",
+                            "Barbosa de Melo",
+                            "172.236.500-51",
+                            "bruno.b.melo@live.com",
+                            new DateTime(1994,07,30),
+                            "My address",
+                            "04173-020",
+                            "São Paulo",
+                            "Brazil"),
+                };
         }
 
         IEnumerator IEnumerable.GetEnumerator()
