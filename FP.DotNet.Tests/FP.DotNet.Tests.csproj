@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FP.DotNet.Domain\FP.DotNet.Domain.csproj" />
+    <ProjectReference Include="..\FP.DotNet.Shared\FP.DotNet.Shared.csproj" />
   </ItemGroup>
 
 </Project>
