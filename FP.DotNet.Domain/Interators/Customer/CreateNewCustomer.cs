@@ -20,28 +20,30 @@ namespace FP.DotNet.Domain.Interators.CustomerServices
         {
             try
             {
-                var model = new Customer(
-                    name: input.Name,
-                    fullName: input.FullName,
-                    cpf: input.Cpf,
-                    email: input.Email,
-                    birthDate: input.BirthDate,
-                    street: input.Street,
-                    zipcode: input.ZipCode,
-                    city: input.City,
-                    country: input.Country);
+                var domain = BuildCustomerDomain(input);
 
-                if (!model.IsValid)
-                    _notification.AddNotification(model.Notifications);
+                if (!domain.IsValid)
+                    _notification.AddNotification(domain.Notifications);
 
                 return _notification.HasNotifications()
                         ? _notification.GetNotifications().ToList()
-                        : model;
+                        : domain;
             }
             catch (Exception ex)
             {
                 return ex;
             }
         }
+
+        internal static Customer BuildCustomerDomain(NewCustomer input)
+        => new(input.Name,
+            input.FullName,
+            input.Cpf,
+            input.Email,
+            input.BirthDate,
+            input.Street,
+            input.ZipCode,
+            input.City,
+            input.Country);
     }
 }
