@@ -7,16 +7,9 @@ namespace FP.DotNet.Domain.Models
 {
     public class Customer : Entity
     {
-        public Customer(
-            string name,
-            string fullName,
-            string cpf,
-            string email,
-            DateTime birthDate,
-            string street,
-            string zipcode,
-            string city,
-            string country
+        public Customer(string name,string fullName,string cpf,string email,
+                        DateTime birthDate,string street,string zipcode,string city,
+                        string country
         ){
             Name = name;
             FullName = fullName;
