@@ -5,7 +5,8 @@ using FP.DotNet.Domain.Models;
 
 namespace FP.DotNet.Tests.ClassDatas
 {
-    public class CustomerClassDataForValidateStateDomain : IEnumerable<object[]>
+    public class CustomerClassDataForValidateStateDomain
+    : IEnumerable<object[]>
     {
         public IEnumerator<object[]> GetEnumerator()
         {
@@ -33,7 +34,7 @@ namespace FP.DotNet.Tests.ClassDatas
         public IEnumerator<object[]> GetEnumerator()
         {
             yield return new object[]{
-                4,
+             11,
                 new Customer(string.Empty,
                             string.Empty,
                             "131.080.430-45",
