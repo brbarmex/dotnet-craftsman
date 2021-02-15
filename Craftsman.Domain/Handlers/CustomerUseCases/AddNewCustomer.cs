@@ -1,22 +1,31 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Craftsman.Domain.Interfaces.ICustomer;
+using Craftsman.Domain.Interfaces.IGateway;
 using Craftsman.Domain.Models;
 using Craftsman.Shared.Bases;
 using Craftsman.Shared.Commands;
+using Craftsman.Shared.Constants;
 using Craftsman.Shared.Interfaces;
+using Craftsman.Shared.ValueObjects;
 using OneOf;
 
 namespace Craftsman.Domain.Handlers.CustomerUseCases
 {
-    public class AddNewCustomer
+    public class AddNewCustomer : ICustomerCreateNewCustomer
     {
         private readonly INotifications _notification;
+        private readonly IZipCodeServices _zipCodeServices;
 
-        public AddNewCustomer(INotifications notifications)
-        => _notification = notifications;
+        public AddNewCustomer(INotifications notifications, IZipCodeServices zipCodeServices)
+        {
+            _notification = notifications;
+            _zipCodeServices = zipCodeServices;
+        }
 
-        public OneOf<IReadOnlyCollection<Notification>, Customer, Exception> Execute(NewCustomerCommand command)
+        public async Task<OneOf<IReadOnlyCollection<Notification>, Customer, Exception>> Execute(NewCustomerCommand command)
         {
             try
             {
@@ -24,6 +33,9 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
 
                 if (!domain.IsValid)
                     _notification.AddNotification(domain.Notifications);
+
+                if (!await ZipCodeEligible(domain.Address.ZipCode).ConfigureAwait(false))
+                    _notification.AddNotification(Constant.Key.ZipCode, Constant.Message.ValueNotExistingInTheBrazilianTerritory);
 
                 return _notification.HasNotifications()
                         ? _notification.GetNotifications().ToList()
@@ -34,6 +46,9 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
                 return ex;
             }
         }
+
+        private Task<bool> ZipCodeEligible(ZipCode value)
+        => _zipCodeServices.ExistsInBrazil(value.ToString());
 
         internal static Customer BuildCustomerDomain(NewCustomerCommand input)
         => new(input.Name,
