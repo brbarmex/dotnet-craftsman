@@ -1,26 +1,26 @@
 using System;
-using OneOf;
 using System.Collections.Generic;
 using System.Linq;
-using Craftsman.Shared.Interfaces;
-using Craftsman.Shared.Bases;
 using Craftsman.Domain.Models;
+using Craftsman.Shared.Bases;
 using Craftsman.Shared.Commands;
+using Craftsman.Shared.Interfaces;
+using OneOf;
 
-namespace Craftsman.Domain.Interators.CustomerServices
+namespace Craftsman.Domain.Handlers.CustomerUseCases
 {
-    public class CreateNewCustomer
+    public class AddNewCustomer
     {
         private readonly INotifications _notification;
 
-        public CreateNewCustomer(INotifications notifications)
+        public AddNewCustomer(INotifications notifications)
         => _notification = notifications;
 
-        public OneOf<IReadOnlyCollection<Notification>, Customer, Exception> Execute(NewCustomer input)
+        public OneOf<IReadOnlyCollection<Notification>, Customer, Exception> Execute(NewCustomerCommand command)
         {
             try
             {
-                var domain = BuildCustomerDomain(input);
+                var domain = BuildCustomerDomain(command);
 
                 if (!domain.IsValid)
                     _notification.AddNotification(domain.Notifications);
@@ -35,7 +35,7 @@ namespace Craftsman.Domain.Interators.CustomerServices
             }
         }
 
-        internal static Customer BuildCustomerDomain(NewCustomer input)
+        internal static Customer BuildCustomerDomain(NewCustomerCommand input)
         => new(input.Name,
             input.FullName,
             input.Cpf,

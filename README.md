@@ -17,8 +17,10 @@ The purpose of this repository is to put into practice all the good practices le
 # What you find here
 - TDD.
 - DDD concepts. 
-- Clean architecutre.
+- Clean architecture concepts.
 - Obsession with primitive types.
 - Concept of strong domain.
 - Notification Pattern.
-- Domain Notitification
+- Domain Notitification.
+- Functional Paradigm concepts.
+- OOP.

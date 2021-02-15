@@ -2,7 +2,7 @@ using System;
 
 namespace Craftsman.Shared.Commands
 {
-    public class NewCustomer
+    public class NewCustomerCommand
     {
         public string Name { get; }
         public string FullName { get; }
