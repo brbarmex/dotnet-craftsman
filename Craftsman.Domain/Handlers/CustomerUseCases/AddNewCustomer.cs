@@ -25,7 +25,10 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
             _zipCodeServices = zipCodeServices;
         }
 
-        public async Task<OneOf<IReadOnlyCollection<Notification>, Customer, Exception>> Execute(NewCustomerCommand command)
+        public async Task<
+                    OneOf<IReadOnlyCollection<Notification>,
+                    Customer,
+                    Exception>> Execute(NewCustomerCommand command)
         {
             try
             {

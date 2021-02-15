@@ -4,8 +4,8 @@ namespace Craftsman.Shared.Commands
 {
     public class NewCustomerCommand
     {
-        public string Name { get; }
-        public string FullName { get; }
+        public string Name { get; set;}
+        public string FullName { get; set;}
         public string Cpf { get; set; }
         public string Email { get; set; }
         public string Street { get; set; }
