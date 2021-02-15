@@ -1,9 +1,7 @@
 using Craftsman.Domain.Handlers.CustomerUseCases;
 using Craftsman.Domain.Interfaces.IGateway;
-using Craftsman.Domain.Models;
 using Craftsman.Shared.Commands;
 using Craftsman.Shared.DomainNotification;
-using Craftsman.Shared.Interfaces;
 using Craftsman.Test.ClassDatas;
 using Moq;
 using Xunit;
