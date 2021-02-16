@@ -24,6 +24,21 @@ namespace Craftsman.Test.ClassDatas
                             City = "São Paulo",
                             Country = "Brazil"
             } };
+                        yield return new object[] {
+                false,
+                false,
+                false,
+                new NewCustomerCommand{
+                            Name = string.Empty,
+                            FullName = string.Empty,
+                            Cpf = string.Empty,
+                            Email = string.Empty,
+                            BirthDate = default,
+                            Street = string.Empty,
+                            ZipCode = default,
+                            City = string.Empty,
+                            Country = string.Empty
+            } };
         }
 
         IEnumerator IEnumerable.GetEnumerator()
