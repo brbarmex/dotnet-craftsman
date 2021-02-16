@@ -38,20 +38,20 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
                 var domain = BuildCustomerDomain(command);
 
                 if (!domain.IsValid)
-                    _notification.AddNotification(domain.Notifications);
+                    AddNotification(domain.Notifications);
 
-                if (!await _customerRepository.CheckIfCustomerAlreadyExistsByCpf(domain.Cpf).ConfigureAwait(false))
+                if (!await SomeDocument(domain.Cpf).ConfigureAwait(false))
                 {
                     if (!await ZipCodeEligible(domain.Address.ZipCode).ConfigureAwait(false))
-                    _notification.AddNotification(PropertyName.ZipCode, Message.ValueNotExistingInTheBrazilianTerritory);
+                        AddNotification(PropertyName.ZipCode, Message.ValueNotExistingInTheBrazilianTerritory);
                 }
                 else
                 {
-                    _notification.AddNotification(PropertyName.CPF, Message.CustomerAlreadyExistWithThisCpf);
+                    AddNotification(PropertyName.CPF, Message.CustomerAlreadyExistWithThisCpf);
                 }
 
-                return _notification.HasNotifications()
-                        ? _notification.GetNotifications().ToList()
+                return HasNotifications()
+                        ? Notifications().ToList()
                         : domain;
             }
             catch (Exception ex)
@@ -60,10 +60,25 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
             }
         }
 
+        private bool HasNotifications()
+        => _notification.HasNotifications();
+
+        private IReadOnlyCollection<Notification> Notifications()
+        => _notification.GetNotifications();
+
+        private void AddNotification(string property, string message)
+        => _notification.AddNotification(property, message);
+
+        private void AddNotification(List<Notification> notifications)
+        => _notification.AddNotification(notifications);
+
+        private Task<bool> SomeDocument(Cpf value)
+        => _customerRepository.CheckIfCustomerAlreadyExistsByCpf(value);
+
         private Task<bool> ZipCodeEligible(ZipCode value)
         => _zipCodeServices.ExistsInBrazil(value.ToString());
 
-        internal static Customer BuildCustomerDomain(NewCustomerCommand input)
+        private static Customer BuildCustomerDomain(NewCustomerCommand input)
         => new(input.Name,
             input.FullName,
             input.Cpf,
