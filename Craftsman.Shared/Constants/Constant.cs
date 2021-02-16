@@ -4,6 +4,7 @@ namespace Craftsman.Shared.Constants
     {
          public static readonly string ValueNotExistingInTheBrazilianTerritory = "CEP not existing in the Brazilian territory";
          public static readonly string MusteBeAnAdult = "Must be an adult.";
+         public static readonly string CustomerAlreadyExistWithThisCpf = "A customer already exists with this document.";
 
          public static string ThePropertyIsInvalidPleaseVerify(string key)
          => $"The {key} is invalid please verify.";

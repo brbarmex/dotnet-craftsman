@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Craftsman.Domain.Interfaces.ICustomer;
 using Craftsman.Domain.Interfaces.IGateway;
+using Craftsman.Domain.Interfaces.Repository;
 using Craftsman.Domain.Models;
 using Craftsman.Shared.Bases;
 using Craftsman.Shared.Commands;
@@ -18,11 +19,13 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
     {
         private readonly INotifications _notification;
         private readonly IZipCodeServices _zipCodeServices;
+        private readonly ICustomerRepository _customerRepository;
 
-        public AddNewCustomer(INotifications notifications, IZipCodeServices zipCodeServices)
+        public AddNewCustomer(INotifications notifications, IZipCodeServices zipCodeServices, ICustomerRepository customerRepository)
         {
             _notification = notifications;
             _zipCodeServices = zipCodeServices;
+            _customerRepository = customerRepository;
         }
 
         public async Task
@@ -37,8 +40,15 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
                 if (!domain.IsValid)
                     _notification.AddNotification(domain.Notifications);
 
-                if (!await ZipCodeEligible(domain.Address.ZipCode).ConfigureAwait(false))
-                    _notification.AddNotification(Constant.Key.ZipCode, Constant.Message.ValueNotExistingInTheBrazilianTerritory);
+                if (!await _customerRepository.CheckIfCustomerAlreadyExistsByCpf(domain.Cpf).ConfigureAwait(false))
+                {
+                    if (!await ZipCodeEligible(domain.Address.ZipCode).ConfigureAwait(false))
+                    _notification.AddNotification(PropertyName.ZipCode, Message.ValueNotExistingInTheBrazilianTerritory);
+                }
+                else
+                {
+                    _notification.AddNotification(PropertyName.CPF, Message.CustomerAlreadyExistWithThisCpf);
+                }
 
                 return _notification.HasNotifications()
                         ? _notification.GetNotifications().ToList()
