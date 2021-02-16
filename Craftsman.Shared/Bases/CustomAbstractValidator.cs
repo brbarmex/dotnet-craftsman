@@ -10,5 +10,11 @@ namespace Craftsman.Shared.Bases
             if (!validation)
                 context.AddFailure(messageFailure);
         }
+
+        protected static void ExecuteValidation(bool validation, CustomContext context, string messageFailure, string propertyName)
+        {
+            if (!validation)
+                context.AddFailure(propertyName, messageFailure);
+        }
     }
 }

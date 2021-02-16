@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using Craftsman.Domain.Models;
 using Craftsman.Shared.Bases;
 using Craftsman.Shared.Constants;
@@ -14,19 +13,19 @@ namespace Craftsman.Domain.Validators
             .NotEmpty()
             .NotNull()
             .WithMessage(Message.ThePropertyIsInvalidPleaseVerify(PropertyName.CPF))
-            .Custom((cpf, ctx) => ExecuteValidation(cpf.IsValid(), ctx, Message.ThePropertyIsInvalidPleaseVerify(PropertyName.CPF)));
+            .Custom((cpf, ctx) => ExecuteValidation(cpf.IsValid(), ctx,PropertyName.CPF, Message.ThePropertyIsInvalidPleaseVerify(PropertyName.CPF)));
 
             RuleFor(x => x.Email)
             .NotEmpty()
             .NotNull()
             .WithMessage(Message.ThePropertyIsInvalidPleaseVerify(PropertyName.Email))
-            .Custom((email, ctx) => ExecuteValidation(email.IsValid(), ctx, Message.ThePropertyIsInvalidPleaseVerify(PropertyName.Email)));
+            .Custom((email, ctx) => ExecuteValidation(email.IsValid(), ctx, PropertyName.CPF, Message.ThePropertyIsInvalidPleaseVerify(PropertyName.Email)));
 
             RuleFor(x => x.BirthDate)
-            .Custom((birthDate, ctx) => ExecuteValidation(birthDate.IsAdult, ctx, Message.MusteBeAnAdult));
+            .Custom((birthDate, ctx) => ExecuteValidation(birthDate.IsAdult, ctx, PropertyName.CPF, Message.MusteBeAnAdult));
 
             RuleFor(x => x.Address.ZipCode)
-            .Custom((zipCode, ctx) => ExecuteValidation(zipCode.IsValid(), ctx, Message.ThePropertyIsInvalidPleaseVerify(PropertyName.ZipCode)));
+            .Custom((zipCode, ctx) => ExecuteValidation(zipCode.IsValid(), ctx, PropertyName.CPF,  Message.ThePropertyIsInvalidPleaseVerify(PropertyName.ZipCode)));
 
             RuleFor(x => x.Name)
             .NotEmpty()
