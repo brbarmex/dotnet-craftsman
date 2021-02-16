@@ -15,7 +15,7 @@ using OneOf;
 
 namespace Craftsman.Domain.Handlers.CustomerUseCases
 {
-    public class AddNewCustomer : ICustomerCreateNewCustomer
+    public sealed class AddNewCustomer : ICustomerCreateNewCustomer
     {
         private readonly INotifications _notification;
         private readonly IZipCodeServices _zipCodeServices;
