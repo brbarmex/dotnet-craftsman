@@ -10,11 +10,13 @@ namespace Craftsman.Test.ClassDatas
         public IEnumerator<object[]> GetEnumerator()
         {
             yield return new object[] {
+                true,
+                true,
                 false,
                 new NewCustomerCommand{
                             Name ="Bruno",
                             FullName = "Barbosa de Melo",
-                            Cpf = "1172.236.500-52",
+                            Cpf = "172.236.500-52",
                             Email = "bruno.b.melo@live.com",
                             BirthDate = new DateTime(1994,07,30),
                             Street = "My address",
