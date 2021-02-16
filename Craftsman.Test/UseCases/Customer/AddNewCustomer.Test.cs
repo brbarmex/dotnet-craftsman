@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Craftsman.Domain.Handlers.CustomerUseCases;
 using Craftsman.Domain.Interfaces.IGateway;
+using Craftsman.Domain.Interfaces.Repository;
 using Craftsman.Domain.Models;
 using Craftsman.Shared.Bases;
 using Craftsman.Shared.Commands;
@@ -21,11 +22,13 @@ namespace Craftsman.Test.UseCases.Customers
         {
             var zipCodeServiceMoq = new Mock<IZipCodeServices>();
             var notificationMoq = new Mock<INotifications>();
+            var customerRepository = new Mock<ICustomerRepository>();
 
             zipCodeServiceMoq.Setup(z => z.ExistsInBrazil(string.Empty).Result).Returns(zipCodeServiceReturnValue);
             notificationMoq.Setup(n => n.HasNotifications()).Returns(hasnotification);
+            customerRepository.Setup(r => r.CheckIfCustomerAlreadyExistsByCpf(default).Result).Returns(true);
 
-            var useCase = new AddNewCustomer(notificationMoq.Object, zipCodeServiceMoq.Object);
+            var useCase = new AddNewCustomer(notificationMoq.Object, zipCodeServiceMoq.Object, customerRepository.Object);
 
             var resultHandler = useCase.Execute(command).Result;
             var result = ExtractTypeBooleanResult(resultHandler);
