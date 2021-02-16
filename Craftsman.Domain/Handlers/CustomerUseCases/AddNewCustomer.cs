@@ -50,6 +50,8 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
                     AddNotification(PropertyName.CPF, Message.CustomerAlreadyExistWithThisCpf);
                 }
 
+                await PersistCustomerDataInTheDatabase(domain).ConfigureAwait(false);
+
                 return HasNotifications()
                         ? Notifications().ToList()
                         : domain;
@@ -59,6 +61,9 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
                 return ex;
             }
         }
+
+        public async Task PersistCustomerDataInTheDatabase(Customer model)
+        => await _customerRepository.Save(model).ConfigureAwait(false);
 
         private bool HasNotifications()
         => _notification.HasNotifications();
