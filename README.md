@@ -1,5 +1,4 @@
-![](/Docs/Images/crafstman.png)
-<img src="/Docs/Images/crafstman.png"  width="100" height="100">
+<img src="/Docs/Images/crafstman.png"  width="250" height="250">
 
 # Goal
 
