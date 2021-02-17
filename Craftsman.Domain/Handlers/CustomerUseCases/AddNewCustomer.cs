@@ -21,7 +21,9 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
         private readonly IZipCodeServices _zipCodeServices;
         private readonly ICustomerRepository _customerRepository;
 
-        public AddNewCustomer(INotifications notifications, IZipCodeServices zipCodeServices, ICustomerRepository customerRepository)
+        public AddNewCustomer(INotifications notifications,
+                              IZipCodeServices zipCodeServices,
+                              ICustomerRepository customerRepository)
         {
             _notification = notifications;
             _zipCodeServices = zipCodeServices;
@@ -40,15 +42,11 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
                 if (!domain.IsValid)
                     AddNotification(domain.Notifications);
 
-                if (!await SomeDocument(domain.Cpf).ConfigureAwait(false))
-                {
-                    if (!await ZipCodeEligible(domain.Address.ZipCode).ConfigureAwait(false))
-                        AddNotification(PropertyName.ZipCode, Message.ValueNotExistingInTheBrazilianTerritory);
-                }
-                else
-                {
+                if (await SomeDocument(domain.Cpf).ConfigureAwait(false))
                     AddNotification(PropertyName.CPF, Message.CustomerAlreadyExistWithThisCpf);
-                }
+
+                if (!await ZipCodeEligible(domain.Address.ZipCode).ConfigureAwait(false))
+                    AddNotification(PropertyName.ZipCode, Message.ValueNotExistingInTheBrazilianTerritory);
 
                 await PersistCustomerDataInTheDatabase(domain).ConfigureAwait(false);
 
@@ -56,14 +54,17 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
                         ? Notifications().ToList()
                         : domain;
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                return ex;
+                return exception;
             }
         }
 
-        public async Task PersistCustomerDataInTheDatabase(Customer model)
-        => await _customerRepository.Save(model).ConfigureAwait(false);
+        private async Task PersistCustomerDataInTheDatabase(Customer model)
+        {
+            if (!HasNotifications())
+                await _customerRepository.Save(model).ConfigureAwait(false);
+        }
 
         private bool HasNotifications()
         => _notification.HasNotifications();
