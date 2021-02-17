@@ -1,4 +1,4 @@
-![](https://github.com/BrunoBMelo/dotnet-craftsman/blob/main/Docs/Images/crafstman.png =100x)
+![](https://github.com/BrunoBMelo/dotnet-craftsman/blob/main/Docs/Images/crafstman.png)
 
 # Goal
 
