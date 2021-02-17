@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Craftsman.Infrastructure.DataBase.Context;
 using Craftsman.Shared.Interfaces;
 
@@ -9,5 +10,10 @@ namespace Craftsman.Infrastructure.DataBase.Repositories
 
         protected Repository(CraftsmanContext context)
         => DbContext = context;
+
+        public Task Save(TEntity model)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

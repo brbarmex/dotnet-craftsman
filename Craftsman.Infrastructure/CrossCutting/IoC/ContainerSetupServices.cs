@@ -2,9 +2,9 @@ using Craftsman.Domain.Handlers.CustomerUseCases;
 using Craftsman.Domain.Interfaces.ICustomer;
 using Craftsman.Domain.Interfaces.IGateway;
 using Craftsman.Infrastructure.DataBase.Context;
-using Craftsman.Infrastructure.DataBase.Interface;
 using Craftsman.Infrastructure.DataBase.UoW;
 using Craftsman.Infrastructure.Gateways.ViaCep.Services;
+using Craftsman.Shared.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Craftsman.Infrastructure.CrossCutting.IoC

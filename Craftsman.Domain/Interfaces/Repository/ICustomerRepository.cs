@@ -5,9 +5,8 @@ using Craftsman.Shared.ValueObjects;
 
 namespace Craftsman.Domain.Interfaces.Repository
 {
-    public interface ICustomerRepository : IRepositoryBase<Customer>
+    public interface ICustomerRepository : IRepositoryBase<Customer>, IUnitOfWork
     {
         Task<bool> CheckIfCustomerAlreadyExistsByCpf(Cpf cpf);
-        Task Save(Customer model);
     }
 }
