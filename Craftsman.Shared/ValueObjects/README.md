@@ -75,7 +75,7 @@ If you are using this in your modeling software, you will need to study a little
 Let's analyze the reference pass for the variable ``document``. As much as there are better ways of implementation in the example above, the result will be the same (big shit).
 
 Realize that the value is from a document and not from a primitive type of string type, and to manipulate that value you always end up needing a
-Standard or auxiliary utility (or better, anti-pattern). If you are using this type of pattern (anti-pattern) it means that your modeling went to the hole because something was born wrong and is growing wrong.
+Helper or Util Patern (or better, anti-pattern). If you are using this type of pattern (anti-pattern) it means that your modeling went to the hole because something was born wrong and is growing wrong.
 
 We will try to predict the future and imagine the possible problems of this use.
 
