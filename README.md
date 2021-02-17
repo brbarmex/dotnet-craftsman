@@ -1,4 +1,5 @@
-![](https://github.com/BrunoBMelo/dotnet-craftsman/blob/main/Docs/Images/crafstman.png)
+![](/Docs/Images/crafstman.png)
+<img src="/Docs/Images/crafstman.png"  width="100" height="100">
 
 # Goal
 
