@@ -1,6 +1,6 @@
 namespace Craftsman.Shared.Bases
 {
-    public class Notification
+    public sealed class Notification
     {
         public Notification(string key, string message)
         {
