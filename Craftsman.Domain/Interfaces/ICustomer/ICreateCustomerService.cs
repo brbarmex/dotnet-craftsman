@@ -8,7 +8,7 @@ using OneOf;
 
 namespace Craftsman.Domain.Interfaces.ICustomer
 {
-    public interface ICustomerCreateNewCustomer
+    public interface ICreateCustomerService
     {
          Task<OneOf<IReadOnlyCollection<Notification>, Customer, Exception>> Execute(NewCustomerCommand command);
     }

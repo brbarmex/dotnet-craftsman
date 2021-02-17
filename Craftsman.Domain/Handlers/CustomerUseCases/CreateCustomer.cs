@@ -15,13 +15,13 @@ using OneOf;
 
 namespace Craftsman.Domain.Handlers.CustomerUseCases
 {
-    public sealed class AddNewCustomer : ICustomerCreateNewCustomer
+    public sealed class CreateCustomer : ICreateCustomerService
     {
         private readonly INotifications _notification;
         private readonly IZipCodeServices _zipCodeServices;
         private readonly ICustomerRepository _customerRepository;
 
-        public AddNewCustomer(INotifications notifications,
+        public CreateCustomer(INotifications notifications,
                               IZipCodeServices zipCodeServices,
                               ICustomerRepository customerRepository)
         {
