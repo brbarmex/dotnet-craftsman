@@ -69,6 +69,7 @@ public class Customer
 If you are using this in your modeling software, you will need to study a little more about good practice and OOP.
 
 > Reader: But Bruno, what is the problem with the section above bro?
+
 > Author: It seems harmless but it is not, there are those who disagree but this excerpt is a "code smell bad" and that's it !!!
 
 Let's analyze the reference pass for the variable ``document``. As much as there are better ways of implementation in the example above, the result will be the same (big shit).
