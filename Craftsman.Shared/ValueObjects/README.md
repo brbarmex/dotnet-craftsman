@@ -74,7 +74,7 @@ If you are using this in your modeling software, you will need to study a little
 
 Observe the assignment of the value ``"132.545.983-32"`` to the variable ``document`` (As much as there are better ways of implementation in the example above, the result will be the same; big shit).
 
-Realize that ```document``` is a type of ```string``` and to change this value you need some manipulator to perform any treatment. This is where ```Helper``` or ```Util``` Patern is born (or rather, the anti-pattern). Understand that it will be necessary to have another object (Helper) to change the status of the ```document``` but the correct is thing to be an <b>Type</b> and  is to be your own owner and make your decisions.
+Realize that ```document``` is a type of ```string``` and to change this value you need some manipulator to perform any treatment. This is where ```Helper``` or ```Util``` Patern is born (or rather, the anti-pattern). Understand that it will be necessary to have another object (Helper) to change the state of the ```document``` but the correct is thing to be an <b>Type</b> and  is to be your own owner and make your decisions.
 
 <b>NOTE:</b> If you are using this type of ```CPFHelper``` (anti-pattern) pattern it means that your modeling went to the hole because something was born wrong and is growing wrong.
 
