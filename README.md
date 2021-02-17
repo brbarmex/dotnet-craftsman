@@ -1,4 +1,4 @@
-# Craftsman ![](https://github.com/BrunoBMelo/dotnet-craftsman/tree/main/Docs/Images)
+# Craftsman ![](https://github.com/BrunoBMelo/dotnet-craftsman/blob/main/Docs/Images/crafstman.png)
 
 # Goal
 
