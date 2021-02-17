@@ -1,4 +1,4 @@
-![image](https://github.com/BrunoBMelo/dotnet-craftsman/blob/main/Docs/Images/crafstman.png)
+![image](https://github.com/BrunoBMelo/dotnet-craftsman/blob/main/Docs/Images/crafstman.png = 100x)
 
 # Goal
 
