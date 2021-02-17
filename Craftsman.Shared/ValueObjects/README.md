@@ -18,7 +18,7 @@ Below, I show some of the most common fictional examples today.
 
 ``` cs 
 
-string document = "132.545.983-32";
+string document = "132.545.983-32"; // This value represents a Brazilian document that we call cpf.
 
 var documentIsValid = CPFHelper.Validate(cpf);
 
