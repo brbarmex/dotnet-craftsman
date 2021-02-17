@@ -6,11 +6,11 @@ namespace Craftsman.Shared.Constants
          public static readonly string MusteBeAnAdult = "Must be an adult.";
          public static readonly string CustomerAlreadyExistWithThisCpf = "A customer already exists with this document.";
 
-         public static string ThePropertyIsInvalidPleaseVerify(string key)
-         => $"The {key} is invalid please verify.";
+         public static string ThePropertyIsInvalidPleaseVerify(string propertyName)
+         => $"The {propertyName} is invalid please verify.";
 
-         public static string InvalidNumberOfCharacters(string key, int min, int max)
-         => $"{key} : Invalid number of characters (min: {min} max:{max})";
+         public static string InvalidNumberOfCharacters(string propertyName, int lengthMin, int lengthMax)
+         => $"{propertyName} : Invalid number of characters (min: {lengthMin} max:{lengthMax})";
     }
 
     public static class PropertyName
