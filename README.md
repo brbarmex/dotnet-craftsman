@@ -1,4 +1,4 @@
-<img src="/Docs/Images/crafstman.png"  width="250" height="250">
+<img src="/Docs/Images/crafstman.png"  width="550" height="250">
 
 # Goal
 
