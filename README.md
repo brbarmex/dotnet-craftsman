@@ -20,6 +20,7 @@ The purpose of this repository is to put into practice all the good practices le
 - Dapper.
 - Clean Code.
 - Docker.
+- Postgresql.
 
 > And as I add more I will update ...
 
