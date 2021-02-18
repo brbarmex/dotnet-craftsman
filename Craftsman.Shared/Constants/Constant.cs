@@ -13,6 +13,11 @@ namespace Craftsman.Shared.Constants
          => $"{propertyName} : Invalid number of characters (min: {lengthMin} max:{lengthMax})";
     }
 
+    public static class ConstantValue
+    {
+        public static readonly string StringConnectionKey = "CraftsmanConnection";
+    }
+
     public static class PropertyName
     {
         public static readonly string ZipCode = "zipcode";

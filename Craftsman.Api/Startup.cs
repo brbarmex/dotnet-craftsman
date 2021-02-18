@@ -5,20 +5,21 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Craftsman.Infrastructure.CrossCutting.IoC;
+using Craftsman.Infrastructure.CrossCutting.Bootstraper;
 
 namespace Craftsman.Api
 {
     public class Startup
     {
         public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        => Configuration = configuration;
 
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
+            Configuration.LoadSetting();
+
             services
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Craftsman.Api", Version = "v1" }))
             .AddControllers();

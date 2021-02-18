@@ -1,0 +1,16 @@
+
+version: "3"
+
+services:
+
+    db:
+      container_name: crafstman_db
+      image: postgres:alpine
+      volumes: 
+      - ./Crafstman.Setup:/scripts
+      - ./Crafstman.Setup/init.sql:/docker-entrypoint-initdb.d/init.sql
+      restart: always
+      environment:
+        POSTGRES_PASSWORD: kalleb
+      ports: 
+        - 5432:5432
