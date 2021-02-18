@@ -4,6 +4,7 @@ using Craftsman.Domain.Models;
 using Craftsman.Infrastructure.DataBase.Context;
 using Craftsman.Shared.Interfaces;
 using Craftsman.Shared.ValueObjects;
+using Dapper;
 
 namespace Craftsman.Infrastructure.DataBase.Repositories
 {
@@ -14,24 +15,19 @@ namespace Craftsman.Infrastructure.DataBase.Repositories
         public CustomerRepository(CraftsmanContext context, IUnitOfWork unitOfWork) : base(context)
         => _uow = unitOfWork;
 
-        public void BeginTransaction()
-        => _uow.BeginTransaction();
-
-
-        public void Rollback()
-        => _uow.Rollback();
+        public void BeginTransaction() => _uow.BeginTransaction();
+        public void Rollback() => _uow.Rollback();
+        public void Commit() => _uow.Commit();
 
         public Task<bool> CheckIfCustomerAlreadyExistsByCpf(Cpf cpf)
         {
             return default;
         }
 
-        public Task Save(Customer model)
+        public override async Task Save(Customer model)
         {
-            return default;
+            const string insertSqlQuery = "";
+            await DbContext.DbConnection.ExecuteAsync(insertSqlQuery,model).ConfigureAwait(false);
         }
-
-        public void Commit()
-        => _uow.Commit();
     }
 }

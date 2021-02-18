@@ -11,9 +11,6 @@ namespace Craftsman.Infrastructure.DataBase.Repositories
         protected Repository(CraftsmanContext context)
         => DbContext = context;
 
-        public Task Save(TEntity model)
-        {
-            throw new System.NotImplementedException();
-        }
+        public abstract  Task Save(TEntity model);
     }
 }
