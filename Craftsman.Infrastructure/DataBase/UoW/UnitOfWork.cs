@@ -1,9 +1,10 @@
+using System;
 using Craftsman.Infrastructure.DataBase.Context;
 using Craftsman.Shared.Interfaces;
 
 namespace Craftsman.Infrastructure.DataBase.UoW
 {
-    public sealed class UnitOfWork : IUnitOfWork
+    public sealed class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly CraftsmanContext DbContext;
 
@@ -11,18 +12,15 @@ namespace Craftsman.Infrastructure.DataBase.UoW
         => DbContext = context;
 
         public void BeginTransaction()
-        {
-            throw new System.NotImplementedException();
-        }
+        => DbContext.Transaction = DbContext.DbConnection.BeginTransaction();
 
         public void Commit()
-        {
-            throw new System.NotImplementedException();
-        }
+        => DbContext.Transaction.Commit();
 
         public void Rollback()
-        {
-            throw new System.NotImplementedException();
-        }
+        => DbContext.Transaction.Rollback();
+
+        public void Dispose()
+        => DbContext.Transaction?.Dispose();
     }
 }

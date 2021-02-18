@@ -16,7 +16,7 @@ namespace Craftsman.Infrastructure.DataBase.Repositories
 
         public void BeginTransaction()
         => _uow.BeginTransaction();
-        
+
 
         public void Rollback()
         => _uow.Rollback();

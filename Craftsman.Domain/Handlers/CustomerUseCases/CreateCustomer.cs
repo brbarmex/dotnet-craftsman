@@ -56,6 +56,7 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
             }
             catch (Exception exception)
             {
+                RollBackTransaction();
                 return exception;
             }
         }
@@ -63,7 +64,11 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
         private async Task PersistCustomerDataInTheDatabase(Customer model)
         {
             if (!HasNotifications())
-                await _customerRepository.Save(model).ConfigureAwait(false);
+            {
+               BeginTransaction();
+               await _customerRepository.Save(model).ConfigureAwait(false);
+               CommitTransaction();
+            }
         }
 
         private bool HasNotifications()
@@ -83,6 +88,15 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
 
         private Task<bool> ZipCodeEligible(ZipCode value)
         => _zipCodeServices.ExistsInBrazil(value.ToString());
+
+        private void BeginTransaction()
+        => _customerRepository.BeginTransaction();
+
+        private void CommitTransaction()
+        => _customerRepository.Commit();
+
+        private void RollBackTransaction()
+        => _customerRepository.Rollback();
 
         private static Customer BuildCustomerDomain(NewCustomerCommand input)
         => new(input.Name,
