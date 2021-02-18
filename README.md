@@ -19,6 +19,7 @@ The purpose of this repository is to put into practice all the good practices le
 - Unit of work.
 - Dapper.
 - Clean Code.
+- Docker.
 
 > And as I add more I will update ...
 
