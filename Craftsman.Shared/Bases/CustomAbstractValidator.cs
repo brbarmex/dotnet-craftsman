@@ -5,16 +5,16 @@ namespace Craftsman.Shared.Bases
 {
     public abstract class CustomAbstractValidator<TEntity> : AbstractValidator<TEntity> where TEntity : class
     {
-        protected static void ExecuteValidation(bool validation, CustomContext context, string messageFailure)
+        protected static void ExecuteValidation(bool validation, CustomContext context, string failure)
         {
             if (!validation)
-                context.AddFailure(messageFailure);
+                context.AddFailure(failure);
         }
 
-        protected static void ExecuteValidation(bool validation, CustomContext context, string messageFailure, string propertyName)
+        protected static void ExecuteValidation(bool validation, CustomContext context, string property, string failure)
         {
             if (!validation)
-                context.AddFailure(propertyName, messageFailure);
+                context.AddFailure(property,failure);
         }
     }
 }

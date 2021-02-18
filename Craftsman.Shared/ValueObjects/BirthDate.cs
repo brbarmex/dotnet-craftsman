@@ -4,12 +4,13 @@ namespace Craftsman.Shared.ValueObjects
 {
     public struct BirthDate
     {
-        public DateTime Date { get; }
-        public int Age { get { return CalculateYear(Date.Year); } }
-        public bool IsAdult { get { return CheckIfIsAdult(Date); } }
+        private readonly DateTime _value;
+
+        public int Age { get { return CalculateYear(_value.Year); } }
+        public bool IsAdult { get { return CheckIfIsAdult(_value); } }
 
         private BirthDate(DateTime value)
-        => Date = value;
+        => _value = value;
 
         public static implicit operator BirthDate(DateTime value)
         => new(value);

@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Craftsman.Domain.Interfaces.Repository;
 using Craftsman.Domain.Models;
@@ -26,11 +27,19 @@ namespace Craftsman.Infrastructure.DataBase.Repositories
 
         public override async Task Save(Customer model)
         {
-            const string insertSqlQuery = "";
-
             await _dataBase
                     .Connection
-                    .ExecuteAsync(insertSqlQuery,model,_dataBase.Transaction)
+                    .ExecuteAsync("INSERT INTO customer_base (customner_fullname, customer_name, customer_document, customer_email, customer_birthdate, customer_street, customer_zipcode, customer_country, customer_city) VALUES(@customner_fullname, @customer_name, @customer_document, @customer_email, @customer_birthdate, @customer_street, @customer_zipcode, @customer_country, @customer_city)",
+                    new { customner_fullname = model.FullName,
+                          customer_name = model.Name,
+                          customer_document = model.Cpf.ToString(),
+                          customer_email = model.Email.ToString(),
+                          customer_birthdate = DateTime.Now,
+                          customer_street = model.Address.Street,
+                          customer_zipcode = model.Address.ZipCode.ToString(),
+                          customer_country = model.Address.Country,
+                          customer_city = model.Address.City },
+                    _dataBase.Transaction)
                     .ConfigureAwait(false);
         }
     }

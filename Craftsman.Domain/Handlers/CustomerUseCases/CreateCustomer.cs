@@ -56,18 +56,26 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
             }
             catch (Exception exception)
             {
-                RollBackTransaction();
                 return exception;
             }
         }
 
         private async Task PersistCustomerDataInTheDatabase(Customer model)
         {
-            if (HasNotifications()) return;
+            try
+            {
+                if (HasNotifications())
+                    return;
 
-            BeginTransaction();
-            await _customerRepository.Save(model).ConfigureAwait(false);
-            CommitTransaction();
+                BeginTransaction();
+                await _customerRepository.Save(model).ConfigureAwait(false);
+                CommitTransaction();
+            }
+            catch (Exception)
+            {
+                RollBackTransaction();
+                throw;
+            }
         }
 
         private bool HasNotifications() => _notification.HasNotifications();

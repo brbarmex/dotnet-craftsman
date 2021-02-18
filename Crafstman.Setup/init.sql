@@ -5,9 +5,9 @@ CREATE DATABASE crafstman_beer;
 CREATE EXTENSION "uuid-ossp";
 
 CREATE TABLE customer_base (
-	_id SERIAL PRIMARY KEY,
+	id SERIAL PRIMARY KEY,
 	customer_id uuid DEFAULT uuid_generate_v4(),
-	customner_name VARCHAR(50),
+	customner_fullname VARCHAR(50),
 	customer_name VARCHAR(15),
 	customer_document VARCHAR(11),
 	customer_email VARCHAR(100),

@@ -13,7 +13,7 @@ namespace FP.DotNet.Tests.MemberDatas
             yield return new object[] { false, "746985080531" };
             yield return new object[] { false, "ksanjbfysa" };
             yield return new object[] { false, "1928448539" };
-            yield return new object[] { false, "44398351809" };
+            yield return new object[] { true, "44398351809" };
             yield return new object[] { false, string.Empty };
             yield return new object[] { false, "131.080.430-45" };
         }

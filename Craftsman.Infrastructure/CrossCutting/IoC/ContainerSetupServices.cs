@@ -6,6 +6,7 @@ using Craftsman.Infrastructure.DataBase.Context;
 using Craftsman.Infrastructure.DataBase.Repositories;
 using Craftsman.Infrastructure.DataBase.UoW;
 using Craftsman.Infrastructure.Gateways.ViaCep.Services;
+using Craftsman.Infrastructure.Settings;
 using Craftsman.Shared.Bases;
 using Craftsman.Shared.DomainNotification;
 using Craftsman.Shared.Interfaces;
@@ -23,6 +24,7 @@ namespace Craftsman.Infrastructure.CrossCutting.IoC
         public static void RegisterGateway(this IServiceCollection service)
         {
             service.AddScoped<IZipCodeServices, ViaCepGateway>();
+            service.AddHttpClient("viaCep", x => x.BaseAddress = new System.Uri(GlobalSettings.UrlViaCep));
         }
 
         public static void RegisterRepositories(this IServiceCollection service)

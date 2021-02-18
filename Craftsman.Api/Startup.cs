@@ -24,6 +24,7 @@ namespace Craftsman.Api
             .AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Craftsman.Api", Version = "v1" }))
             .AddControllers();
 
+            services.AddCors();
             services.RegisterDataBase();
             services.RegisterUnitOfWork();
             services.RegisterRepositories();
@@ -46,7 +47,8 @@ namespace Craftsman.Api
             .UseHttpsRedirection()
             .UseRouting()
             .UseAuthorization()
-            .UseEndpoints(endpoints => endpoints.MapControllers());
+            .UseEndpoints(endpoints => endpoints.MapControllers())
+            .UseCors(opt => opt.AllowAnyOrigin());
         }
     }
 }

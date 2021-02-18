@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Craftsman.Domain.Interfaces.ICustomer;
 using Craftsman.Shared.Commands;
@@ -17,7 +18,7 @@ namespace Craftsman.Api.Controllers
             .ConfigureAwait(false))
             .Match<IActionResult>
             (
-                notifications => BadRequest(notifications),
+                notifications => BadRequest(notifications.Select(s => s.Message)),
                 Success => Ok(Success),
                 Exception => StatusCode(StatusCodes.Status500InternalServerError, Exception.Message)
             );

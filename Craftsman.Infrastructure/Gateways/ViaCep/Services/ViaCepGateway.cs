@@ -10,10 +10,13 @@ namespace Craftsman.Infrastructure.Gateways.ViaCep.Services
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
+        public ViaCepGateway(IHttpClientFactory httpClientFactory)
+        => _httpClientFactory = httpClientFactory;
+
        public async Task<bool> ExistsInBrazil(string value)
        {
             var responseMessage = await _httpClientFactory
-                          .CreateClient(GlobalSettings.UrlViaCep)
+                          .CreateClient("viaCep")
                           .GetAsync($"ws/{value}/json/")
                           .ConfigureAwait(false);
 
