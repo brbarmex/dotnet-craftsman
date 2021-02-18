@@ -63,50 +63,23 @@ namespace Craftsman.Domain.Handlers.CustomerUseCases
 
         private async Task PersistCustomerDataInTheDatabase(Customer model)
         {
-            if (!HasNotifications())
-            {
-               BeginTransaction();
-               await _customerRepository.Save(model).ConfigureAwait(false);
-               CommitTransaction();
-            }
+            if (HasNotifications()) return;
+
+            BeginTransaction();
+            await _customerRepository.Save(model).ConfigureAwait(false);
+            CommitTransaction();
         }
 
-        private bool HasNotifications()
-        => _notification.HasNotifications();
-
-        private IReadOnlyCollection<Notification> Notifications()
-        => _notification.GetNotifications();
-
-        private void AddNotification(string property, string message)
-        => _notification.AddNotification(property, message);
-
-        private void AddNotification(List<Notification> notifications)
-        => _notification.AddNotification(notifications);
-
-        private Task<bool> SomeDocument(Cpf value)
-        => _customerRepository.CheckIfCustomerAlreadyExistsByCpf(value);
-
-        private Task<bool> ZipCodeEligible(ZipCode value)
-        => _zipCodeServices.ExistsInBrazil(value.ToString());
-
-        private void BeginTransaction()
-        => _customerRepository.BeginTransaction();
-
-        private void CommitTransaction()
-        => _customerRepository.Commit();
-
-        private void RollBackTransaction()
-        => _customerRepository.Rollback();
-
+        private bool HasNotifications() => _notification.HasNotifications();
+        private IReadOnlyCollection<Notification> Notifications() => _notification.GetNotifications();
+        private void AddNotification(string property, string message) => _notification.AddNotification(property, message);
+        private void AddNotification(List<Notification> notifications) => _notification.AddNotification(notifications);
+        private Task<bool> SomeDocument(Cpf value) => _customerRepository.CheckIfCustomerAlreadyExistsByCpf(value);
+        private Task<bool> ZipCodeEligible(ZipCode value) => _zipCodeServices.ExistsInBrazil(value.ToString());
+        private void BeginTransaction() => _customerRepository.BeginTransaction();
+        private void CommitTransaction() => _customerRepository.Commit();
+        private void RollBackTransaction() => _customerRepository.Rollback();
         private static Customer BuildCustomerDomain(NewCustomerCommand input)
-        => new(input.Name,
-            input.FullName,
-            input.Cpf,
-            input.Email,
-            input.BirthDate,
-            input.Street,
-            input.ZipCode,
-            input.City,
-            input.Country);
+        => new(input.Name,input.FullName,input.Cpf,input.Email,input.BirthDate,input.Street,input.ZipCode,input.City,input.Country);
     }
 }
