@@ -12,7 +12,7 @@ namespace Craftsman.Infrastructure.DataBase.UoW
         => DbContext = context;
 
         public void BeginTransaction()
-        => DbContext.Transaction = DbContext.DbConnection.BeginTransaction();
+        => DbContext.Transaction = DbContext.Connection.BeginTransaction();
 
         public void Commit()
         => DbContext.Transaction.Commit();

@@ -27,7 +27,11 @@ namespace Craftsman.Infrastructure.DataBase.Repositories
         public override async Task Save(Customer model)
         {
             const string insertSqlQuery = "";
-            await DbContext.DbConnection.ExecuteAsync(insertSqlQuery,model).ConfigureAwait(false);
+
+            await _dataBase
+                    .Connection
+                    .ExecuteAsync(insertSqlQuery,model,_dataBase.Transaction)
+                    .ConfigureAwait(false);
         }
     }
 }

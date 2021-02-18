@@ -6,10 +6,10 @@ namespace Craftsman.Infrastructure.DataBase.Repositories
 {
     public abstract class Repository<TEntity> : IRepositoryBase<TEntity> where TEntity : class
     {
-        protected CraftsmanContext DbContext;
+        protected CraftsmanContext _dataBase;
 
         protected Repository(CraftsmanContext context)
-        => DbContext = context;
+        => _dataBase = context;
 
         public abstract  Task Save(TEntity model);
     }

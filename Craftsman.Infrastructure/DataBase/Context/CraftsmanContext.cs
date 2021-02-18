@@ -7,16 +7,16 @@ namespace Craftsman.Infrastructure.DataBase.Context
 {
     public sealed class CraftsmanContext : IDisposable
     {
-        public IDbConnection DbConnection { get; }
+        public IDbConnection Connection { get; }
         public IDbTransaction Transaction { get; set; }
 
         public CraftsmanContext()
         {
-            DbConnection = new SqlConnection(GlobalSettings.StringConnection);
-            DbConnection.Open();
+            Connection = new SqlConnection(GlobalSettings.StringConnection);
+            Connection.Open();
         }
 
         public void Dispose()
-        => DbConnection?.Close();
+        => Connection?.Close();
     }
 }
