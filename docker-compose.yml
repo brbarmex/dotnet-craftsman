@@ -11,6 +11,6 @@ services:
       - ./Crafstman.Setup/init.sql:/docker-entrypoint-initdb.d/init.sql
       restart: always
       environment:
-        POSTGRES_PASSWORD: kalleb
+        POSTGRES_PASSWORD: crafstman_pwd
       ports: 
         - 5432:5432
