@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="oneof" Version="3.0.178" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Craftsman.Domain\Craftsman.Domain.csproj" />
+    <ProjectReference Include="..\Craftsman.Infrastructure\Craftsman.Infrastructure.csproj" />
+    <ProjectReference Include="..\Craftsman.Shared\Craftsman.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -28,7 +28,7 @@ namespace Craftsman.Test.UseCases.Customers
             notificationMoq.Setup(n => n.HasNotifications()).Returns(hasnotification);
             customerRepository.Setup(r => r.CheckIfCustomerAlreadyExistsByCpf(default).Result).Returns(true);
 
-            var useCase = new CreateNewCustomer(notificationMoq.Object, zipCodeServiceMoq.Object, customerRepository.Object);
+            var useCase = new CreateCustomer(notificationMoq.Object, zipCodeServiceMoq.Object, customerRepository.Object);
 
             var resultHandler = useCase.Execute(command).Result;
             var result = ExtractTypeBooleanResult(resultHandler);

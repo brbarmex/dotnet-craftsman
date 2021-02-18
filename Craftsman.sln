@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Craftsman.Tests", "Craftsma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Craftsman.Infrastructure", "Craftsman.Infrastructure\Craftsman.Infrastructure.csproj", "{13767F9B-06A6-463B-932D-E146250ABE96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Craftsman.Api", "Craftsman.Api\Craftsman.Api.csproj", "{2A7C2941-84FD-4609-8FB2-2211E84BFFF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -120,5 +122,17 @@ Global
 		{13767F9B-06A6-463B-932D-E146250ABE96}.Release|x64.Build.0 = Release|Any CPU
 		{13767F9B-06A6-463B-932D-E146250ABE96}.Release|x86.ActiveCfg = Release|Any CPU
 		{13767F9B-06A6-463B-932D-E146250ABE96}.Release|x86.Build.0 = Release|Any CPU
+		{2A7C2941-84FD-4609-8FB2-2211E84BFFF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A7C2941-84FD-4609-8FB2-2211E84BFFF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A7C2941-84FD-4609-8FB2-2211E84BFFF3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2A7C2941-84FD-4609-8FB2-2211E84BFFF3}.Debug|x64.Build.0 = Debug|Any CPU
+		{2A7C2941-84FD-4609-8FB2-2211E84BFFF3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2A7C2941-84FD-4609-8FB2-2211E84BFFF3}.Debug|x86.Build.0 = Debug|Any CPU
+		{2A7C2941-84FD-4609-8FB2-2211E84BFFF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A7C2941-84FD-4609-8FB2-2211E84BFFF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A7C2941-84FD-4609-8FB2-2211E84BFFF3}.Release|x64.ActiveCfg = Release|Any CPU
+		{2A7C2941-84FD-4609-8FB2-2211E84BFFF3}.Release|x64.Build.0 = Release|Any CPU
+		{2A7C2941-84FD-4609-8FB2-2211E84BFFF3}.Release|x86.ActiveCfg = Release|Any CPU
+		{2A7C2941-84FD-4609-8FB2-2211E84BFFF3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

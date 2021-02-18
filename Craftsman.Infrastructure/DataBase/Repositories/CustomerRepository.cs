@@ -21,7 +21,7 @@ namespace Craftsman.Infrastructure.DataBase.Repositories
 
         public Task<bool> CheckIfCustomerAlreadyExistsByCpf(Cpf cpf)
         {
-            return default;
+            return Task.FromResult(false); // Temporally
         }
 
         public override async Task Save(Customer model)
