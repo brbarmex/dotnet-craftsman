@@ -8,7 +8,7 @@ namespace Craftsman.Api.Controllers
 {
     [ApiController]
     [Route("customer")]
-    public class CustomerConstroller : ControllerBase
+    public sealed class CustomerConstroller : ControllerBase
     {
         [HttpPost]
         public async Task<IActionResult> Post([FromServices]ICreateCustomerService _useCase, NewCustomerCommand body)
