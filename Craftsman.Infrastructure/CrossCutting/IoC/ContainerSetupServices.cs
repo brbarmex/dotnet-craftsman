@@ -1,9 +1,8 @@
-using Craftsman.Domain.Handlers.CustomerUseCases;
 using Craftsman.Domain.Interfaces.ICustomer;
 using Craftsman.Domain.Interfaces.IGateway;
 using Craftsman.Domain.Interfaces.Repository;
+using Craftsman.Domain.Services.Customers;
 using Craftsman.Infrastructure.DataBase.Context;
-using Craftsman.Infrastructure.DataBase.Mapping;
 using Craftsman.Infrastructure.DataBase.Repositories;
 using Craftsman.Infrastructure.DataBase.UoW;
 using Craftsman.Infrastructure.Gateways.ViaCep.Services;

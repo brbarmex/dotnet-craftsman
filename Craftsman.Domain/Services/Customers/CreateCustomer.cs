@@ -13,7 +13,7 @@ using Craftsman.Shared.Interfaces;
 using Craftsman.Shared.ValueObjects;
 using OneOf;
 
-namespace Craftsman.Domain.Handlers.CustomerUseCases
+namespace Craftsman.Domain.Services.Customers
 {
     public sealed class CreateCustomer : ICreateCustomerService
     {

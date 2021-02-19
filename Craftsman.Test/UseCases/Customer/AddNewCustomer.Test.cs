@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Craftsman.Domain.Handlers.CustomerUseCases;
 using Craftsman.Domain.Interfaces.IGateway;
 using Craftsman.Domain.Interfaces.Repository;
 using Craftsman.Domain.Models;
+using Craftsman.Domain.Services.Customers;
 using Craftsman.Shared.Bases;
 using Craftsman.Shared.Commands;
 using Craftsman.Shared.Interfaces;
