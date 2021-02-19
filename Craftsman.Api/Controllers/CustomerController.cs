@@ -12,10 +12,10 @@ namespace Craftsman.Api.Controllers
     public sealed class CustomerConstroller : ControllerBase
     {
         [HttpPost]
-        public async Task<IActionResult> Post([FromServices]ICreateCustomerService _useCase, NewCustomerCommand body)
-        => (await _useCase
-            .Execute(body)
-            .ConfigureAwait(false))
+        public async Task<IActionResult> Post([FromServices]ICreateCustomerService createCustomer, NewCustomerCommand body)
+        => (await
+             createCustomer
+            .Execute(body).ConfigureAwait(false))
             .Match<IActionResult>
             (
                 notifications => BadRequest(notifications.Select(s => s.Message)),
