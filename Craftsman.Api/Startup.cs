@@ -31,6 +31,9 @@ namespace Craftsman.Api
             services.RegisterGateway();
             services.RegisterUseCases();
             services.RegisterNotifications();
+            services.AutoMapperEnable();
+
+            FluentMap.LoadMapping();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
