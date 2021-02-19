@@ -1,6 +1,5 @@
 using System;
 using System.Data;
-using System.Data.SqlClient;
 using Craftsman.Infrastructure.Settings;
 using Npgsql;
 
@@ -17,7 +16,6 @@ namespace Craftsman.Infrastructure.DataBase.Context
             Connection.Open();
         }
 
-        public void Dispose()
-        => Connection?.Close();
+        public void Dispose() => Connection?.Close();
     }
 }
