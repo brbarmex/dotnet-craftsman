@@ -33,9 +33,7 @@ namespace Craftsman.Infrastructure.DataBase.Repositories
         public override async Task Save(Customer model)
         => await _dataBase
                 .Connection
-                .InsertAsync(
-                    _mapper.Map<CustomerPO>(model),
-                    _dataBase.Transaction)
+                .InsertAsync(_mapper.Map<CustomerPO>(model),_dataBase.Transaction)
                 .ConfigureAwait(false);
     }
 }
