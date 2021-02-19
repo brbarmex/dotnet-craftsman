@@ -21,6 +21,7 @@ The purpose of this repository is to put into practice all the good practices le
 - Clean Code.
 - Docker.
 - Postgresql.
+- AutoMapper.
 
 > And as I add more I will update ...
 
