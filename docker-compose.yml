@@ -7,8 +7,8 @@ services:
       container_name: crafstman_db
       image: postgres:alpine
       volumes: 
-      - ./Crafstman.Setup:/scripts
-      - ./Crafstman.Setup/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./setup:/scripts
+      - ./setup/init.sql:/docker-entrypoint-initdb.d/init.sql
       restart: always
       environment:
         POSTGRES_PASSWORD: crafstman_pwd
