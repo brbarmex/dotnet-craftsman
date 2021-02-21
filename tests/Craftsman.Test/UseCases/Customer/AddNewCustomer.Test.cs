@@ -4,12 +4,10 @@ using System.Threading;
 using Craftsman.Application.Boudaries.Customer.CommandHandler;
 using Craftsman.Application.Boundaries.Customer.Commands;
 using Craftsman.Domain.Bases;
-using Craftsman.Domain.Entities;
 using Craftsman.Domain.Interfaces;
 using Craftsman.Domain.Interfaces.IGateway;
 using Craftsman.Domain.Interfaces.Repository;
 using Craftsman.Test.ClassDatas;
-using Microsoft.Extensions.Primitives;
 using Moq;
 using OneOf;
 using Xunit;
@@ -25,10 +23,10 @@ namespace Craftsman.Test.UseCases.Customers
             var zipCodeServiceMoq = new Mock<IZipCodeServices>();
             var notificationMoq = new Mock<INotifications>();
             var customerRepository = new Mock<ICustomerRepository>();
-            var messageMq = new List<Notification>(0)
+            var messageMq = hasnotification ? new List<Notification>(0)
             {
                 new Notification(string.Empty, string.Empty)
-            };
+            } : new List<Notification>(0);
 
             zipCodeServiceMoq.Setup(z => z.ExistsInBrazil(string.Empty).Result).Returns(zipCodeServiceReturnValue);
             notificationMoq.Setup(n => n.HasNotifications()).Returns(hasnotification);
