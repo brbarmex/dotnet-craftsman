@@ -22,6 +22,8 @@ The purpose of this repository is to put into practice all the good practices le
 - Docker.
 - Postgresql.
 - AutoMapper.
+- MediatR.
+- CQRS.
 
 > And as I add more I will update ...
 
