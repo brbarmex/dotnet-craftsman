@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Craftsman.Domain.Models;
+using Craftsman.Domain.Entities;
 
 namespace FP.DotNet.Tests.ClassDatas
 {

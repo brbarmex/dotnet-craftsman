@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Craftsman.Shared.Commands;
+using Craftsman.Application.Boundaries.Customer.Commands;
 
 namespace Craftsman.Test.ClassDatas
 {
@@ -13,7 +13,7 @@ namespace Craftsman.Test.ClassDatas
                 true,
                 true,
                 false,
-                new NewCustomerCommand{
+                new CreateCommand{
                             Name ="Bruno",
                             FullName = "Barbosa de Melo",
                             Cpf = "172.236.500-52",
@@ -28,7 +28,7 @@ namespace Craftsman.Test.ClassDatas
                 false,
                 false,
                 false,
-                new NewCustomerCommand{
+                new CreateCommand{
                             Name = string.Empty,
                             FullName = string.Empty,
                             Cpf = string.Empty,

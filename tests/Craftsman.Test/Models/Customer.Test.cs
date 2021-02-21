@@ -1,4 +1,4 @@
-using Craftsman.Domain.Models;
+using Craftsman.Domain.Entities;
 using FP.DotNet.Tests.ClassDatas;
 using Xunit;
 

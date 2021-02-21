@@ -22,10 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Craftsman.Application\Craftsman.Application.csproj" />
     <ProjectReference Include="..\..\src\Craftsman.Domain\Craftsman.Domain.csproj" />
-    <ProjectReference Include="..\..\src\Craftsman.Shared\Craftsman.Shared.csproj" />
   </ItemGroup>
-
-
 
 </Project>

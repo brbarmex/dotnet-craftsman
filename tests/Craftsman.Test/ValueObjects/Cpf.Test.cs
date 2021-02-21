@@ -1,4 +1,4 @@
-using Craftsman.Shared.ValueObjects;
+using Craftsman.Domain.ValueObjects;
 using FP.DotNet.Tests.MemberDatas;
 using Xunit;
 
