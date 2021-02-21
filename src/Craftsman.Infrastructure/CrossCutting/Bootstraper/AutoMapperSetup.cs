@@ -9,7 +9,11 @@ namespace Craftsman.Infrastructure.CrossCutting.Bootstraper
         public static void AutoMapperEnable(this IServiceCollection services)
         => services
           .AddSingleton(
-              new MapperConfiguration(config => config.AddProfile(new DomainToDataBase()))
+              new MapperConfiguration(config =>
+              {
+                  config.AddProfile(new DomainToDataBase());
+                  config.AddProfile(new DataBaseToDomain());
+              })
               .CreateMapper());
     }
 }

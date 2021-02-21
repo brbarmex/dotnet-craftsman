@@ -15,6 +15,8 @@ namespace Craftsman.Domain.ValueObjects
 
         public bool IsValid()
         {
+            if(string.IsNullOrWhiteSpace(_value)) return false;
+
             string cpf = _value
                 .Trim()
                 .Replace(".", string.Empty)

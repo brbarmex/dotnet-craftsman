@@ -10,9 +10,9 @@ namespace Craftsman.Test.ClassDatas
         public IEnumerator<object[]> GetEnumerator()
         {
             yield return new object[] {
-                true,
-                true,
                 false,
+                true,
+                true,
                 new CreateCommand{
                             Name ="Bruno",
                             FullName = "Barbosa de Melo",
@@ -24,7 +24,7 @@ namespace Craftsman.Test.ClassDatas
                             City = "São Paulo",
                             Country = "Brazil"
             } };
-                        yield return new object[] {
+            yield return new object[] {
                 false,
                 false,
                 false,

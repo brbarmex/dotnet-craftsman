@@ -14,7 +14,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Craftsman.Domain\Craftsman.Domain.csproj" />
     <ProjectReference Include="..\Craftsman.Infrastructure\Craftsman.Infrastructure.csproj" />
-    <ProjectReference Include="..\Craftsman.Shared\Craftsman.Shared.csproj" />
     <ProjectReference Include="..\Craftsman.Application\Craftsman.Application.csproj" />
   </ItemGroup>
 

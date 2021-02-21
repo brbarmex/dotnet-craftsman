@@ -25,6 +25,26 @@ namespace Craftsman.Domain.Entities
             ValidateDomain(this, new CustomerValidator());
         }
 
+        public Customer(int id, Guid customerId, string name, string fullName, string cpf, string email, DateTime birthDate, string street, string zipcode, string city,string country)
+        {
+            Id = id;
+            EntityId = customerId;
+            Name = name;
+            FullName = fullName;
+            Cpf = cpf;
+            Email = email;
+            BirthDate = birthDate;
+            Address = new Address
+            {
+                Street = street,
+                ZipCode = zipcode,
+                City = city,
+                Country = country
+            };
+
+            ValidateDomain(this, new CustomerValidator());
+        }
+
         public string Name { get; }
         public string FullName { get; }
         public Cpf Cpf { get; }

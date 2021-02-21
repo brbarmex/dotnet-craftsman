@@ -10,6 +10,7 @@ namespace FP.DotNet.Tests.ClassDatas
             yield return new object[] { false, "1112345" };
             yield return new object[] { true, "04173-020" };
             yield return new object[] { false, string.Empty };
+            yield return new object[] { false, null };
         }
 
         IEnumerator IEnumerable.GetEnumerator()

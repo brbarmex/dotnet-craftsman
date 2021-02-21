@@ -5,7 +5,13 @@ namespace Craftsman.Domain.ValueObjects
     public struct BirthDate
     {
         public int Age { get { return CalculateYear(Value.Year); } }
-        public bool IsAdult { get { return CheckIfIsAdult(Value); } }
+        public bool IsAdult { get
+          {
+              if(Value == default)
+                return false;
+
+              return CheckIfIsAdult(Value);
+        } }
         public readonly DateTime Value {get;}
 
         private BirthDate(DateTime value) => Value = value;

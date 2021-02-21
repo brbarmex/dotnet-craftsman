@@ -4,9 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Craftsman.Infrastructure.CrossCutting.IoC;
-using Craftsman.Infrastructure.CrossCutting.Bootstraper;
 using MediatR;
+using Craftsman.Infrastructure.CrossCutting.Bootstraper;
+using Craftsman.Infrastructure.CrossCutting.IoC;
 
 namespace Craftsman.Api
 {

@@ -16,6 +16,6 @@ namespace Craftsman.Domain.ValueObjects
         => _value;
 
         public bool IsValid()
-        => Regex.IsMatch(_value, "[0-9]{5}-[0-9]{3}");
+        => Regex.IsMatch(!string.IsNullOrWhiteSpace(_value) ? _value : string.Empty, "[0-9]{5}-[0-9]{3}");
     }
 }

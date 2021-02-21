@@ -23,7 +23,7 @@ namespace Craftsman.Infrastructure.CrossCutting.IoC
     {
         public static void RegisterUseCases(this IServiceCollection service)
         {
-            service.AddScoped<IRequestHandler<CreateCommand, OneOf<List<Notification>, Customer, Exception>>, CreateCommandHandler>();
+            service.AddScoped<IRequestHandler<CreateCommand, OneOf<List<Notification>, CreateCommand, Exception>>, CreateCommandHandler>();
         }
 
         public static void RegisterGateway(this IServiceCollection service)

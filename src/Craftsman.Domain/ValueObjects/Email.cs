@@ -18,7 +18,7 @@ namespace Craftsman.Domain.ValueObjects
         public bool IsValid()
         => Regex
            .IsMatch(
-               _value,
+               !string.IsNullOrWhiteSpace(_value) ? _value : string.Empty,
                @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
                RegexOptions.IgnoreCase
             );

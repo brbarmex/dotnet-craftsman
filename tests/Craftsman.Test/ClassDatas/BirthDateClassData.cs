@@ -10,6 +10,7 @@ namespace FP.DotNet.Tests.MemberDatas
         {
             yield return new object[] { true, new DateTime(1994, 7, 30) };
             yield return new object[] { false, new DateTime(2020, 01, 01) };
+            yield return new object[] { false, null };
         }
 
         IEnumerator IEnumerable.GetEnumerator()
