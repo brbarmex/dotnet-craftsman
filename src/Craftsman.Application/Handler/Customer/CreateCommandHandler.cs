@@ -36,7 +36,7 @@ namespace Craftsman.Application.Boudaries.Customer.CommandHandler
                 var domain = BuildCustomerDomain(request);
 
                 if (!domain.IsValid)
-                    AddNotification(domain.Notifications);
+                    return domain.Notifications;
 
                 if (await SomeDocument(domain.Cpf).ConfigureAwait(false))
                     AddNotification(PropertyName.CPF, Message.CustomerAlreadyExistWithThisCpf);
@@ -47,7 +47,7 @@ namespace Craftsman.Application.Boudaries.Customer.CommandHandler
                 await PersistCustomerDataInTheDatabase(domain).ConfigureAwait(false);
 
                 return HasNotifications()
-                        ? Notifications().ToList()
+                        ? GetNotifications()
                         : domain;
             }
             catch (Exception exception)
@@ -75,9 +75,8 @@ namespace Craftsman.Application.Boudaries.Customer.CommandHandler
         }
 
         private bool HasNotifications() => _notification.HasNotifications();
-        private IReadOnlyCollection<Notification> Notifications() => _notification.GetNotifications();
+        private List<Notification> GetNotifications() => _notification.GetNotifications().ToList();
         private void AddNotification(string property, string message) => _notification.AddNotification(property, message);
-        private void AddNotification(List<Notification> notifications) => _notification.AddNotification(notifications);
         private Task<bool> SomeDocument(Cpf value) => _customerRepository.CheckIfCustomerAlreadyExistsByCpf(value);
         private Task<bool> ZipCodeEligible(ZipCode value) => _zipCodeServices.ExistsInBrazil(value.ToString());
         private void BeginTransaction() => _customerRepository.BeginTransaction();
