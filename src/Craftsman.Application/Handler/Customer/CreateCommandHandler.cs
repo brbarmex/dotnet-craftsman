@@ -36,11 +36,18 @@ namespace Craftsman.Application.Boudaries.Customer.CommandHandler
             if (!domain.IsValid)
                 return domain.Notifications;
 
-            if (await SomeDocument(domain.Cpf).ConfigureAwait(false))
-                AddNotification(PropertyName.CPF, Message.CustomerAlreadyExistWithThisCpf);
+            var resultOfProcess = await Task.WhenAll
+            (
+                ZipCodeEligible(domain.Address.ZipCode),
+                SomeDocument(domain.Cpf)
 
-            if (!await ZipCodeEligible(domain.Address.ZipCode).ConfigureAwait(false))
-                AddNotification(PropertyName.ZipCode, Message.ValueNotExistingInTheBrazilianTerritory);
+            ).ConfigureAwait(false);
+
+            if (!resultOfProcess[0])
+                 AddNotification(PropertyName.ZipCode, Message.ValueNotExistingInTheBrazilianTerritory);
+
+            if (resultOfProcess[1])
+                AddNotification(PropertyName.CPF, Message.CustomerAlreadyExistWithThisCpf);
 
             if (HasNotifications())
                 return GetNotifications();

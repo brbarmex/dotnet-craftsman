@@ -1,0 +1,25 @@
+{
+  "name": "Craftsman.Test.Stress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "webpack",
+    "test": "k6 run ./dist/main.bundle.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "faker-br": "^0.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.17",
+    "@babel/preset-env": "^7.12.17",
+    "babel-loader": "^8.2.2",
+    "core-js": "^3.9.0",
+    "k6": "0.0.0",
+    "webpack": "^5.23.0",
+    "webpack-cli": "^4.5.0"
+  }
+}
