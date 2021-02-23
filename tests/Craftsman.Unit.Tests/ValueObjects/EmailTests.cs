@@ -1,7 +1,6 @@
 using System;
 using Craftsman.Domain.ValueObjects;
 using Craftsman.Unit.Tests.Fixtures.ClassFixture.Email;
-using FP.DotNet.Tests.ClassDatas;
 using Xunit;
 
 namespace FP.DotNet.Tests.ValueObjects
