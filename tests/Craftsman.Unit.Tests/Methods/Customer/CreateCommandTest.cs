@@ -14,8 +14,11 @@ using Xunit;
 
 namespace Craftsman.Test.UseCases.Customers
 {
-    public class AddNewCustomerTest
+    public class CreateCommandTest
     {
+
+        /// Will refactor
+
         [Theory]
         [ClassData(typeof(NewCustomerCommandClassData))]
         public void Test_behavior_of_AddNewCustomer_UseCase(bool expected, bool zipCodeServiceReturnValue, bool hasnotification, CreateCommand command)
