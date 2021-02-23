@@ -24,6 +24,7 @@ The purpose of this repository is to put into practice all the good practices le
 - AutoMapper.
 - MediatR.
 - CQRS.
+- K6 Stress tests.
 
 > And as I add more I will update ...
 
