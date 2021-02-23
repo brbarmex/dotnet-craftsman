@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Bogus;
@@ -11,14 +12,14 @@ namespace Craftsman.Unit.Tests.Fixtures.ClassFixture.Entities.Customer
 
         public RandomCustomerValidObject()
         {
-            var fakes = new Faker<Domain.Entities.Customer>()
+            var fakes = new Faker<Domain.Entities.Customer>("pt_BR")
                             .CustomInstantiator(faker =>
                             new Domain.Entities.Customer(
                                 faker.Name.FirstName(),
                                 faker.Name.LastName(),
                                 faker.Person.Cpf(),
                                 faker.Internet.Email(),
-                                faker.Date.Past(18),
+                                faker.Date.PastOffset(20, DateTime.Now.AddYears(-18)).Date,
                                 faker.Address.StreetAddress(),
                                 faker.Address.ZipCode(),
                                 faker.Address.City(),
