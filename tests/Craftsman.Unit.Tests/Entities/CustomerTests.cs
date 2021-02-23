@@ -8,21 +8,21 @@ namespace FP.DotNet.Tests.Models
     public class CustomerTest
     {
         [Theory]
-        [ClassData(typeof(CustomerClassDataForValidateStateDomain))]
-        public void Should_Validate_Model(bool expected, Customer model)
-        => Assert.Equal(expected, model.IsValid);
-
-        [Theory]
-        [ClassData(typeof(CustomClassDataForValidateCountOfNotifications))]
-        public void Should_Validate_Count_Notifications(int expected, Customer model)
-        => Assert.Equal(expected, model.Notifications.Count);
-
-        [Theory]
+        [Trait("Customer","")]
         [ClassData(typeof(ValidObjectWithOutNotifications))]
         public void Customer_Validate_MustBeValidDomainWithOutNotifications(Customer customer)
         {
             Assert.True(customer.IsValid);
             Assert.False(customer.Notifications.Count > 0);
+        }
+
+        [Theory]
+        [Trait("Customer","")]
+        [ClassData(typeof(InvalidObjectWithNotification))]
+        public void Customer_Validate_MustBeInvalidAndMustContainNotification(Customer customer)
+        {
+            Assert.False(customer.IsValid);
+            Assert.True(customer.Notifications.Count > 0);
         }
     }
 }
