@@ -3,7 +3,7 @@ using Craftsman.Domain.ValueObjects;
 using Craftsman.Unit.Tests.Fixtures.ClassFixture.BirthDate;
 using Xunit;
 
-namespace FP.DotNet.Tests.ValueObjects
+namespace Craftsman.Unit.Tests.ValueObjects
 {
     public class BirthDateTest
     {

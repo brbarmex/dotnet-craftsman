@@ -2,7 +2,7 @@ using Craftsman.Domain.Entities;
 using Craftsman.Unit.Tests.Fixtures.ClassFixture.Entities.Customer;
 using Xunit;
 
-namespace FP.DotNet.Tests.Models
+namespace Craftsman.Unit.Tests.Entities
 {
     public class CustomerTest
     {

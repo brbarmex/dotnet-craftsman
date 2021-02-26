@@ -15,37 +15,76 @@ namespace Craftsman.Domain.ValueObjects
 
         public bool IsValid()
         {
-            if(string.IsNullOrWhiteSpace(_value)) return false;
+            string value = _value;
 
-            string cpf = _value
-                .Trim()
-                .Replace(".", string.Empty)
-                .Replace("-", string.Empty);
+            if (value == null)
+            return false;
 
-            if (cpf.Length != 11) return false;
+            var posicao = 0;
+            var totalDigito1 = 0;
+            var totalDigito2 = 0;
+            var dv1 = 0;
+            var dv2 = 0;
 
-            string hasCpf = cpf.Substring(0, 9);
-            int sum = 0;
-            int[] multiplier_1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-            int[] multiplier_2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            bool digitosIdenticos = true;
+            var ultimoDigito = -1;
 
-            for (int i = 0; i < 9; i++)
-                sum += int.Parse(hasCpf[i].ToString()) * multiplier_1[i];
+            foreach (var c in value)
+            {
+                if (char.IsDigit(c))
+                {
+                    var digito = c - '0';
+                    if (posicao != 0 && ultimoDigito != digito)
+                    {
+                        digitosIdenticos = false;
+                    }
 
-            hasCpf += HasRest(Rest(sum)).ToString();
-            sum = 0;
+                    ultimoDigito = digito;
+                    if (posicao < 9)
+                    {
+                        totalDigito1 += digito * (10 - posicao);
+                        totalDigito2 += digito * (11 - posicao);
+                    }
+                    else if (posicao == 9)
+                    {
+                        dv1 = digito;
+                    }
+                    else if (posicao == 10)
+                    {
+                        dv2 = digito;
+                    }
 
-            for (int i = 0; i < 10; i++)
-                sum += int.Parse(hasCpf[i].ToString()) * multiplier_2[i];
+                    posicao++;
+                }
+            }
 
-            return VerifyingDigit(
-                        cpf,
-                        HasRest(Rest(sum))
-                        .ToString());
+            if (posicao > 11)
+            {
+                return false;
+            }
+
+            if (digitosIdenticos)
+            {
+                return false;
+            }
+
+            var digito1 = totalDigito1 % 11;
+            digito1 = digito1 < 2
+                ? 0
+                : 11 - digito1;
+
+            if (dv1 != digito1)
+            {
+                return false;
+            }
+
+            totalDigito2 += digito1 * 2;
+            var digito2 = totalDigito2 % 11;
+            digito2 = digito2 < 2
+                ? 0
+                : 11 - digito2;
+
+            return dv2 == digito2;
         }
-
-        private static int Rest(int sum) => sum % 11;
-        private static int HasRest(int rest) => rest < 0 ? 0 : (11 - rest);
-        private static bool VerifyingDigit(string cpf, string digit) => cpf.EndsWith(digit);
     }
 }

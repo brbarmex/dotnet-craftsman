@@ -1,55 +1,54 @@
-using System;
 using System.Collections.Generic;
 using System.Threading;
 using Craftsman.Application.Boudaries.Customer.CommandHandler;
 using Craftsman.Application.Boundaries.Customer.Commands;
 using Craftsman.Domain.Bases;
+using Craftsman.Domain.Entities;
 using Craftsman.Domain.Interfaces;
 using Craftsman.Domain.Interfaces.IGateway;
 using Craftsman.Domain.Interfaces.Repository;
-using Craftsman.Test.ClassDatas;
+using Craftsman.Unit.Tests.Fixtures.ClassFixture.Commands;
 using Moq;
-using OneOf;
 using Xunit;
 
-namespace Craftsman.Test.UseCases.Customers
+namespace Craftsman.Unit.Tests.Methods.Customers
 {
     public class CreateCommandTest
     {
+        private readonly Mock<IZipCodeServices> zipCodeServiceMock;
+        private readonly Mock<INotifications> notificationMock;
+        private readonly Mock<ICustomerRepository> customerRepositoryMock;
+        private readonly CreateCommandHandler useCase;
 
-        /// Will refactor
-
-        [Theory]
-        [ClassData(typeof(NewCustomerCommandClassData))]
-        public void Test_behavior_of_AddNewCustomer_UseCase(bool expected, bool zipCodeServiceReturnValue, bool hasnotification, CreateCommand command)
+        public CreateCommandTest()
         {
-            var zipCodeServiceMoq = new Mock<IZipCodeServices>();
-            var notificationMoq = new Mock<INotifications>();
-            var customerRepository = new Mock<ICustomerRepository>();
-            var messageMq = hasnotification ? new List<Notification>(0)
-            {
-                new Notification(string.Empty, string.Empty)
-            } : new List<Notification>(0);
-
-            zipCodeServiceMoq.Setup(z => z.ExistsInBrazil(string.Empty).Result).Returns(zipCodeServiceReturnValue);
-            notificationMoq.Setup(n => n.HasNotifications()).Returns(hasnotification);
-            notificationMoq.Setup(n => n.GetNotifications()).Returns(messageMq);
-            customerRepository.Setup(r => r.CheckIfCustomerAlreadyExistsByCpf(default).Result).Returns(true);
-
-            var useCase = new CreateCommandHandler(notificationMoq.Object, zipCodeServiceMoq.Object, customerRepository.Object);
-
-            var resultHandler = useCase.Handle(command, CancellationToken.None).Result;
-            var result = ExtractTypeBooleanResult(resultHandler);
-
-            Assert.Equal(expected, result);
+            // Arrange
+            zipCodeServiceMock = new Mock<IZipCodeServices>();
+            notificationMock = new Mock<INotifications>();
+            customerRepositoryMock = new Mock<ICustomerRepository>();
+            useCase = new CreateCommandHandler(notificationMock.Object,zipCodeServiceMock.Object,customerRepositoryMock.Object);
         }
 
-        private static bool ExtractTypeBooleanResult(OneOf<List<Notification>,CreateCommand,Exception> valueToExtract)
-        => valueToExtract.Match
+        [Theory]
+        [Trait("CreateCustomer","")]
+        [ClassData(typeof(CustomerCommandInvalidObject))]
+        public void CresteCustomerCommand_CreateCustomer_MustBeErrWhenCommandIsInvalid(CreateCommand command)
+        {
+            // Act
+            var response = useCase.Handle(command, CancellationToken.None).Result.Match<object>
             (
-                notifications => false,
-                successOutputModel => true,
-                hasException => false
+                notifications => notifications,
+                successOutputModel => successOutputModel,
+                hasException => hasException
             );
+
+            // Assert
+            customerRepositoryMock.Verify(c => c.BeginTransaction(), Times.Never);
+            customerRepositoryMock.Verify(c => c.Commit(), Times.Never);
+            customerRepositoryMock.Verify(c => c.SaveAndReturnRow(It.IsAny<Customer>()).Result, Times.Never);
+            notificationMock.Verify(n => n.HasNotifications(), Times.Never);
+            notificationMock.Verify(n => n.AddNotification(It.IsAny<Notification>()), Times.Never);
+            Assert.IsType<List<Notification>>(response);
+        }
     }
 }

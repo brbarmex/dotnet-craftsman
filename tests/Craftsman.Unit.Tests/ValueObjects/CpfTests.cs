@@ -2,7 +2,7 @@ using Craftsman.Domain.ValueObjects;
 using Craftsman.Unit.Tests.Fixtures.ClassFixture.Cpf;
 using Xunit;
 
-namespace FP.DotNet.Tests.ValueObjects
+namespace Craftsman.Unit.Tests.ValueObjects
 {
     public class CpfTest
     {

@@ -7,12 +7,10 @@ namespace Craftsman.Unit.Tests.Fixtures.ClassFixture.ZipCode
     {
         public IEnumerator<object[]> GetEnumerator()
         {
-            throw new System.NotImplementedException();
+            yield return new object[] { new()};
         }
 
         IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new System.NotImplementedException();
-        }
+        => default;
     }
 }
