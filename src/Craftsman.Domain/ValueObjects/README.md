@@ -1,19 +1,19 @@
 # Value object
 
-The '<b>Value Object</b>' is an object that represents a value! basically that. :)
-Value Object is mentioned by Eric Evans in his famous <b>DDD</b> book because value objects help in building strong domains avoiding future problems in their modeling and the famous "code smell bad"
+A '<b>Value Object</b>' is an object that represents a value! Basically that. :)
+Value Object are mentioned by Eric Evans in his famous <b>DDD</b> book because value objects help building strong domains, avoiding future modeling problems in their and the famous "code smell bad"
 
 # Characteristics
 
 - They are immutable.
 - They have no identity.
-- Are small.
-- Avoids the use of primitive obsession.
-- Help with documentation.
+- They are small.
+- They help abuse of primitive obsession.
+- They help withing documentation.
 
-# See in practice
+# Pratical example
 
-Below, I show some of the most common fictional examples today.
+Below, I demonstrate some of the most common use cases today.
 
 
 ``` cs 
