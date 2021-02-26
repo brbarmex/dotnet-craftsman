@@ -8,7 +8,7 @@
 The purpose of this repository is to put into practice all the good practices learned over the years in a single project to test a POC
 
 # What you find here
-- TDD (xUnit, Bogus.Net).
+- TDD (xUnit, Bogus.Net, Moq).
 - DDD concepts. 
 - Clean architecture concepts.
 - Obsession with primitive types (how to avoid).
