@@ -1,6 +1,7 @@
 <img src="/docs/Images/crafstman.png"  width="550" height="250">
 
-### W A R N I N G !!! <span style="color:red"> *Overengineering* Overengineering</span>. !!! This project is a concept study do not use in real life
+### W A R N I N G !!! This project is a concept study do not use in real life
+# Overengineering !
 
 # Goal
 
