@@ -12,10 +12,10 @@ namespace Craftsman.Unit.Tests.Fixtures.ClassFixture.Commands
             {
                 new CreateCommand
                 {
-                   Name     =   string.Empty,
-                   FullName =   string.Empty,
-                   Cpf      =    string.Empty,
-                   Email    =   string.Empty,
+                   Name      =   string.Empty,
+                   FullName  =   string.Empty,
+                   Cpf       =    string.Empty,
+                   Email     =   string.Empty,
                    BirthDate =  default,
                    Street    =  string.Empty,
                    ZipCode   =  string.Empty,
