@@ -1,5 +1,7 @@
 <img src="/docs/Images/crafstman.png"  width="550" height="250">
 
+### W A R N I N G !!! Overengineering !!! This project is a concept study do not use in real life
+
 # Goal
 
 The purpose of this repository is to put into practice all the good practices learned over the years in a single project to test a POC
