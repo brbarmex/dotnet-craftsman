@@ -1,11 +1,14 @@
 <img src="/docs/Images/crafstman.png"  width="550" height="250">
 
+### W A R N I N G !!! This project is a concept study do not use in real life
+# Overengineering !
+
 # Goal
 
 The purpose of this repository is to put into practice all the good practices learned over the years in a single project to test a POC
 
 # What you find here
-- TDD (xUnit, Bogus.Net).
+- TDD (xUnit, Bogus.Net, Moq).
 - DDD concepts. 
 - Clean architecture concepts.
 - Obsession with primitive types (how to avoid).
