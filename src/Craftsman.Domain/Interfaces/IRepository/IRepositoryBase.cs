@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 
 namespace Craftsman.Domain.Interfaces
@@ -6,5 +7,6 @@ namespace Craftsman.Domain.Interfaces
     {
         Task Save(TEntity model);
         Task<TEntity> SaveAndReturnRow(TEntity model);
+        Task<TEntity> GetByGuid(Guid id);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Craftsman.Domain.Interfaces;
 using Craftsman.Infrastructure.DataBase.Context;
@@ -11,6 +12,7 @@ namespace Craftsman.Infrastructure.DataBase.Repositories
         protected Repository(CraftsmanContext context)
         => _db = context;
 
+        public abstract Task<TEntity> GetByGuid(Guid id);
         public abstract Task Save(TEntity model);
         public abstract Task<TEntity> SaveAndReturnRow(TEntity model);
     }

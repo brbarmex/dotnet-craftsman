@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using AutoMapper;
 using Craftsman.Domain.Entities;
@@ -26,6 +27,10 @@ namespace Craftsman.Infrastructure.DataBase.Repositories
         public void Rollback() => _uow.Rollback();
         public void Commit() => _uow.Commit();
 
+        public async Task<bool> CheckIfCustomerAlreadyExistsByGuidId(Guid id)
+        => await _db
+                .Connection
+                .ExecuteScalarAsync<bool>("select count(1) from customer_base where customer_id = @Id", new{ Id = id }).ConfigureAwait(false);
         public async Task<bool> CheckIfCustomerAlreadyExistsByCpf(Cpf cpf)
         =>  await _db
                   .Connection
@@ -47,6 +52,24 @@ namespace Craftsman.Infrastructure.DataBase.Repositories
             var row = await _db.Connection.GetAsync<CustomerPO>(_id).ConfigureAwait(false);
 
             return _mapper.Map<Customer>(row);
+        }
+
+        public override async Task<Customer> GetByGuid(Guid id)
+        => _mapper.Map<Customer>(await _db.Connection.GetAsync<CustomerPO>(id).ConfigureAwait(false));
+
+        public async Task<bool> UpdateAddress(Guid id ,Address address)
+        => await _db.Connection.UpdateAsync(new CustomerPO
+            {
+                Customer_Id = id,
+                Customer_Street = address.Street,
+                Customer_City = address.City,
+                Customer_Country = address.Country,
+                Customer_ZipCode = address.ZipCode.ToString()
+            }, _db.Transaction).ConfigureAwait(false);
+
+        public Task<bool> CheckIfCustomerExists(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
