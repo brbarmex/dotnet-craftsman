@@ -28,6 +28,7 @@ The purpose of this repository is to put into practice all the good practices le
 - MediatR.
 - CQRS.
 - K6 Stress tests.
+- Restful.
 
 > And as I add more I will update ...
 
