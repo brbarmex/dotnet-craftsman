@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Craftsman.Api.Controllers
 {
     [ApiController]
-    [Route("customer")]
-    public sealed class CustomerConstroller : ControllerBase
+    [Route("[controller]")]
+    public sealed class CustomersController : ControllerBase
     {
         [HttpPost]
         public async Task<IActionResult> Post([FromServices] IMediator _mediator, CreateCommand request)
