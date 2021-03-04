@@ -5,6 +5,8 @@ namespace Craftsman.Domain.Constants
          public static readonly string ValueNotExistingInTheBrazilianTerritory = "CEP not existing in the Brazilian territory";
          public static readonly string MusteBeAnAdult = "Must be an adult.";
          public static readonly string CustomerAlreadyExistWithThisCpf = "A customer already exists with this document.";
+         public static readonly string CustomerNotExists = "The customer not exists.";
+         public static readonly string CannotBeChanged = "Cannot be changed";
 
          public static string ThePropertyIsInvalidPleaseVerify(string propertyName)
          => $"The {propertyName} is invalid please verify.";
@@ -28,5 +30,11 @@ namespace Craftsman.Domain.Constants
         public static readonly string City = "city";
         public static readonly string Street = "street";
         public static readonly string Country = "country";
+        public static readonly string EntityId = "Id";
+    }
+
+    public static class ObjectName
+    {
+        public static readonly string Address = "address";
     }
 }

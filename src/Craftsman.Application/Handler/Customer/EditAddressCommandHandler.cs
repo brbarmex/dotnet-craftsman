@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Craftsman.Application.Commands;
 using Craftsman.Domain.Bases;
+using Craftsman.Domain.Constants;
 using Craftsman.Domain.Interfaces;
 using Craftsman.Domain.Interfaces.IGateway;
 using Craftsman.Domain.Interfaces.Repository;
@@ -50,13 +51,13 @@ namespace Craftsman.Application.Handler.Customer
                 }
 
                 if (!resultOfProcess[0])
-                    AddNotification("", "");
+                    AddNotification(PropertyName.EntityId, Message.CustomerNotExists);
 
                 if (!resultOfProcess[1])
-                    AddNotification("", "");
+                    AddNotification(PropertyName.ZipCode, Message.ValueNotExistingInTheBrazilianTerritory);
 
                 if (!resultOfProcess[2])
-                    AddNotification("", "");
+                    AddNotification(ObjectName.Address, Message.CannotBeChanged);
 
                 return GetNotifications();
             }

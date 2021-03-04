@@ -58,18 +58,20 @@ namespace Craftsman.Infrastructure.DataBase.Repositories
         => _mapper.Map<Customer>(await _db.Connection.GetAsync<CustomerPO>(id).ConfigureAwait(false));
 
         public async Task<bool> UpdateAddress(Guid id ,Address address)
-        => await _db.Connection.UpdateAsync(new CustomerPO
-            {
-                Customer_Id = id,
-                Customer_Street = address.Street,
-                Customer_City = address.City,
-                Customer_Country = address.Country,
-                Customer_ZipCode = address.ZipCode.ToString()
-            }, _db.Transaction).ConfigureAwait(false);
+        => (await _db.Connection
+                    .ExecuteAsync("UPDATE customer_base SET customer_street=@Customer_Street ,customer_zipcode=@Customer_Zipcode, customer_country=@Customer_Country, customer_city=@Customer_City WHERE customer_id=@Customer_Id",
+                    new
+                    {
+                        Customer_Id = id,
+                        Customer_Street = address.Street,
+                        Customer_City = address.City,
+                        Customer_Country = address.Country,
+                        Customer_ZipCode = address.ZipCode.ToString()
+                    }, _db.Transaction).ConfigureAwait(false)) > 0;
 
         public Task<bool> CheckIfCustomerExists(Guid id)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(false);
         }
     }
 }

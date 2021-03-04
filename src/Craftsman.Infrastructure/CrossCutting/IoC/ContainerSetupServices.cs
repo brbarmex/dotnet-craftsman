@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using Craftsman.Application.Boudaries.Customer.CommandHandler;
 using Craftsman.Application.Boundaries.Customer.Commands;
+using Craftsman.Application.Commands;
+using Craftsman.Application.Handler.Customer;
 using Craftsman.Domain.Bases;
 using Craftsman.Domain.DomainNotification;
 using Craftsman.Domain.Entities;
@@ -24,6 +26,7 @@ namespace Craftsman.Infrastructure.CrossCutting.IoC
         public static void RegisterUseCases(this IServiceCollection service)
         {
             service.AddScoped<IRequestHandler<CreateCommand, OneOf<List<Notification>, CreateCommand, Exception>>, CreateCommandHandler>();
+            service.AddScoped<IRequestHandler<EditAddressCustomerCommand, OneOf<List<Notification>, EditAddressCustomerCommand, Exception>>, EditAddressCommandHandler>();
         }
 
         public static void RegisterGateway(this IServiceCollection service)
