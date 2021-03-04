@@ -22,7 +22,7 @@ namespace Craftsman.Api
             Configuration.LoadSetting();
 
             services
-            .AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Craftsman.Api", Version = "v1" }))
+            .AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "The craftsman.", Version = "v1" }))
             .AddControllers();
 
             services.AddCors();
@@ -46,7 +46,7 @@ namespace Craftsman.Api
                 app
                 .UseDeveloperExceptionPage()
                 .UseSwagger()
-                .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Craftsman.Api v1"));
+                .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "The craftsman."));
             }
 
             app
