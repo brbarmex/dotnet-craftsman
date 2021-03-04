@@ -34,6 +34,7 @@ namespace Craftsman.Api
             services.RegisterNotifications();
             services.AutoMapperEnable();
             services.AddMediatR(typeof(Startup));
+            services.AddRouting(opt => opt.LowercaseUrls = opt.LowercaseQueryStrings = true);
 
             FluentMap.LoadMapping();
         }
